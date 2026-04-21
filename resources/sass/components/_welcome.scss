@@ -1,0 +1,269 @@
+// ─── Variables partagées ────────────────────────────────────────────────────────
+$w-bg:           #0a0a0a;
+$w-accent:       #c9a96e;
+$w-accent-hover: #e0c080;
+$w-text:         #e2e2e2;
+$w-text-muted:   #888888;
+$w-text-subtle:  #444444;
+$w-border:       rgba(255, 255, 255, 0.07);
+$w-font-heading: 'Cinzel', serif;
+$w-font-body:    'Inter', sans-serif;
+
+// ─── Page ────────────────────────────────────────────────────────────────────────
+.welcome-body {
+  margin: 0;
+  padding: 0;
+  background-color: $w-bg;
+  color: $w-text;
+  font-family: $w-font-body;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.welcome-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  // Dégradés de fond subtils
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 50%, rgba(201, 169, 110, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 20%, rgba(201, 169, 110, 0.04) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 100%, rgba(201, 169, 110, 0.03) 0%, transparent 40%);
+    pointer-events: none;
+  }
+}
+
+// ─── Navigation ──────────────────────────────────────────────────────────────────
+.welcome-nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 48px;
+}
+
+.welcome-nav__brand {
+  font-family: $w-font-heading;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $w-accent;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.welcome-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.welcome-nav__link {
+  font-family: $w-font-body;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: $w-text-muted;
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    color: $w-text;
+    border-color: $w-border;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &--primary {
+    color: $w-bg;
+    background: $w-accent;
+    border-color: $w-accent;
+
+    &:hover {
+      color: $w-bg;
+      background: $w-accent-hover;
+      border-color: $w-accent-hover;
+    }
+  }
+}
+
+// ─── Hero ────────────────────────────────────────────────────────────────────────
+.welcome-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-hero__eyebrow {
+  font-family: $w-font-body;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $w-accent;
+  margin: 0 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: $w-accent;
+    opacity: 0.5;
+  }
+}
+
+.welcome-hero__title {
+  font-family: $w-font-heading;
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: $w-text;
+  margin: 0 0 24px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  max-width: 700px;
+}
+
+.welcome-hero__sub {
+  font-size: 16px;
+  color: $w-text-muted;
+  margin: 0 0 48px;
+  line-height: 1.75;
+  max-width: 460px;
+}
+
+.welcome-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.welcome-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 8px;
+  font-family: $w-font-body;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &--primary {
+    background: $w-accent;
+    color: #0a0a0a;
+    border-color: $w-accent;
+
+    &:hover {
+      background: $w-accent-hover;
+      border-color: $w-accent-hover;
+      box-shadow: 0 4px 20px rgba(201, 169, 110, 0.28);
+    }
+  }
+
+  &--secondary {
+    background: transparent;
+    color: $w-text-muted;
+    border-color: rgba(255, 255, 255, 0.12);
+
+    &:hover {
+      color: $w-text;
+      border-color: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.04);
+    }
+  }
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────────────────
+.welcome-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 48px;
+  border-top: 1px solid $w-border;
+}
+
+.welcome-footer__version {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: $w-text-subtle;
+  text-transform: uppercase;
+}
+
+// ─── Responsive ──────────────────────────────────────────────────────────────────
+@media (max-width: 640px) {
+  .welcome-nav {
+    padding: 20px 24px;
+  }
+
+  .welcome-nav__brand {
+    font-size: 14px;
+  }
+
+  .welcome-nav__link {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+
+  .welcome-hero {
+    padding: 40px 20px;
+  }
+
+  .welcome-hero__sub {
+    font-size: 14px;
+  }
+
+  .welcome-footer {
+    padding: 20px 24px;
+  }
+}
